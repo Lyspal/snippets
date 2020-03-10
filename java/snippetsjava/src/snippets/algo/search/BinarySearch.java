@@ -5,6 +5,7 @@ package snippets.algo.search;
 
 /**
  * Implementation of binary search.
+ * Time complexitty: O(log(n))
  * 
  * @author sylvainlaporte
  * @version %I%, %G%
