@@ -1,6 +1,3 @@
-/**
- * Copyright 2020 Sylvain Laporte.
- */
 package snippets.algo.search;
 
 /**
