@@ -3,7 +3,7 @@ package snippets.ds;
 import java.util.Iterator;
 
 /**
- * Dynamic array.
+ * Implementation of a dynamic array data structure.
  * <p>
  * Very similar to Java ArrayList.
  * 
