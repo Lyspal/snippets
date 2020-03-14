@@ -19,6 +19,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Default constructor.
+	 * <p>
+	 * O(1)
 	 */
 	public DynamicArray() {
 		this(16);
@@ -26,6 +28,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Constructor.
+	 * <p>
+	 * O(1)
 	 * 
 	 * @param capacity	the initial capacity of the array
 	 */
@@ -40,6 +44,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Returns the size of the array.
+	 * <p>
+	 * O(1)
 	 * 
 	 * @return	the size of the array
 	 */
@@ -49,6 +55,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Checks if the array is empty.
+	 * <p>
+	 * O(1)
 	 * 
 	 * @return	true if empty; else false
 	 */
@@ -58,6 +66,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Gets the value at index.
+	 * <p>
+	 * O(1)
 	 * 
 	 * @param index	the index of the value to get
 	 * @return		the value at index
@@ -68,6 +78,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Sets the value of the element at index.
+	 * <p>
+	 * O(1)
 	 * 
 	 * @param index		the index of the element to set
 	 * @param element	the element to set at index
@@ -78,6 +90,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Clears the array, setting all elements to null.
+	 * <p>
+	 * O(n)
 	 */
 	public void clear() {
 		for (int i = 0; i < capacity; i++) {
@@ -87,14 +101,16 @@ public class DynamicArray<T> implements Iterable<T> {
 	}
 	
 	/**
-	 * Adds an element the the array.
+	 * Adds an element at the end of the array.
+	 * <p>
+	 * O(n)
 	 * <p>
 	 * If the capacity of the array is smaller than required, the array is
 	 * resized at the double of its current capacity.
 	 * 
 	 * @param element	the element to add
 	 */
-	public void add(T element) {
+	public void append(T element) {
 		// Checks if resize is needed.
 		if (length + 1 >= capacity) {
 			if (capacity == 0) {
@@ -115,8 +131,27 @@ public class DynamicArray<T> implements Iterable<T> {
 	}
 	
 	/**
+	 * Adds an element at specified index.
+	 * <p>
+	 * O(n)
+	 * 
+	 * @param index		the index where to insert the element
+	 * @param element	the element to insert
+	 */
+	public void insert(int index, T element) {
+		append(element);
+		int i;
+		for (i = length - 1; i > index; --i) {
+			array[i] = array[i - 1];
+		}
+		array[i] = element;
+	}
+	
+	/**
 	 * Removes the element at the specified index of the array, and reduces the
 	 * array capacity.
+	 * <p>
+	 * O(n)
 	 * 
 	 * @param index	the index of the element to remove
 	 * @return		the element removed
@@ -144,6 +179,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Removes the specified element from the array.
+	 * <p>
+	 * O(n)
 	 * 
 	 * @param obj	the element to remove
 	 * @return		true if the element is removed; false otherwise
@@ -160,6 +197,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Returns the index of the specified element.
+	 * <p>
+	 * O(n)
 	 * 
 	 * @param obj	the element of which we want the index
 	 * @return		the index of the specified element
@@ -175,6 +214,8 @@ public class DynamicArray<T> implements Iterable<T> {
 	
 	/**
 	 * Checks if the array contains the specified element.
+	 * <p>
+	 * O(n)
 	 * 
 	 * @param obj	the element to check
 	 * @return		true if the element is found; false otherwise
