@@ -1,8 +1,10 @@
-package snippets.algo.search;
+package test.snippets.algotest.search;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import main.snippets.algo.search.BinarySearch;
 
 class BinarySearchTest {
 

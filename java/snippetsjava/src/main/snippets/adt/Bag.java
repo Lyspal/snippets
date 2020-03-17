@@ -1,4 +1,4 @@
-package snippets.adt;
+package main.snippets.adt;
 /**
  * Type abstrait du sac, implémenté à l'aide d'un array.
  * 

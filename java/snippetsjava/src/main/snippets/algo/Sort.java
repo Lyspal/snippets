@@ -1,4 +1,4 @@
-package snippets.algo;
+package main.snippets.algo;
 
 // TODO: Implements for generic types.
 

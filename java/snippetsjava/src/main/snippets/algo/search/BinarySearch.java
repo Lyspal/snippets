@@ -1,4 +1,4 @@
-package snippets.algo.search;
+package main.snippets.algo.search;
 
 /**
  * Implementation of binary search.
