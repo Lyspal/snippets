@@ -132,7 +132,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
 			tail = new Node<T>(element, null, null);
 			head = tail;
 		} else {
-			head.next = new Node<T>(element, tail, null);
+			tail.next = new Node<T>(element, tail, null);
 			tail = tail.next;
 		}
 		size++;
