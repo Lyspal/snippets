@@ -10,7 +10,8 @@ import java.util.Iterator;
 /**
  * A dynamic array implementation of a stack.
  * <p>
- * Space complexity: 24 + 24n
+ * Space complexity:	24 + 24n
+ * 						24 + 8n (for static array))
  * 
  * @author sylvainlaporte
  * @version %I%, %G%
