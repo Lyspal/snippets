@@ -1,26 +1,28 @@
 /**
  * Copyright 2020 Sylvain Laporte.
  */
-package main.snippets.ds;
+package main.snippets.ds.stack;
 
+import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 /**
- * A doubly linked list implementation of a stack.
+ * A dynamic array implementation of a stack.
+ * <p>
+ * Space complexity: 24 + 24n
  * 
  * @author sylvainlaporte
  * @version %I%, %G%
  */
-public class Stack<T> implements Iterable<T> {
+public class ArrayStack<T> implements Stack<T> {
 
-	private LinkedList<T> list = new LinkedList<T>();
+	private ArrayList<T> array = new ArrayList<T>();
 	
 	/**
 	 * Constructor.
 	 */
-	public Stack() {
+	public ArrayStack() {
 		
 	}
 	
@@ -29,7 +31,7 @@ public class Stack<T> implements Iterable<T> {
 	 * 
 	 * @param firstElement	the initial element
 	 */
-	public Stack(T firstElement) {
+	public ArrayStack(T firstElement) {
 		push(firstElement);
 	}
 	
@@ -39,7 +41,7 @@ public class Stack<T> implements Iterable<T> {
 	 * @return	the number of elements
 	 */
 	public int size() {
-		return list.size();
+		return array.size();
 	}
 	
 	/**
@@ -57,7 +59,7 @@ public class Stack<T> implements Iterable<T> {
 	 * @param element	the element to push
 	 */
 	public void push(T element) {
-		list.addLast(element);
+		array.add(element);
 	}
 	
 	/**
@@ -72,7 +74,7 @@ public class Stack<T> implements Iterable<T> {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
-		return list.removeLast();
+		return array.remove(size() - 1);
 	}
 	
 	/**
@@ -87,7 +89,7 @@ public class Stack<T> implements Iterable<T> {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
-		return list.peekLast();
+		return array.get(size() - 1);
 	}
 	
 	/**
@@ -95,7 +97,7 @@ public class Stack<T> implements Iterable<T> {
 	 */
 	@Override
 	public Iterator<T> iterator() {
-		return list.iterator();
+		return array.iterator();
 	}
 
 }

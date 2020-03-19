@@ -3,12 +3,19 @@
  */
 package test.snippets.ds;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
 
-import main.snippets.ds.Stack;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import main.snippets.ds.stack.ArrayStack;
+import main.snippets.ds.stack.LinkedListStack;
+import main.snippets.ds.stack.Stack;
 
 /**
  * Tests for the Stack class. 
@@ -20,18 +27,24 @@ import main.snippets.ds.Stack;
  */
 class StackTest {
 
-	Stack<Integer> stack;
-	
-	@BeforeEach
-	public void setup() {
-		stack = new Stack<Integer>();
-	}
-
 	/**
-	 * Test method for {@link main.snippets.ds.Stack#isEmpty()}.
+	 * Provides tests with different stack types.
+	 * 
+	 * @return	the stream of stacks of dirrefent type
 	 */
-	@Test
-	public void testIsEmpty() {
+	public static Stream<Arguments> provideStacks() {
+		  return Stream.of(
+		      Arguments.of(new ArrayStack<Integer>()),
+		      Arguments.of(new LinkedListStack<Integer>())
+		  );
+		}
+	
+	/**
+	 * Test method for {@link main.snippets.ds.stack.LinkedListStack#isEmpty()}.
+	 */
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	public void testIsEmpty(Stack<Integer> stack) {
 		assertTrue(stack.isEmpty());
 		assertEquals(0, stack.size());
 	}
@@ -39,8 +52,9 @@ class StackTest {
 	/**
 	 * Tests pop on an empty stack.
 	 */
-	@Test
-	public void testPopOnEmpty() {
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	public void testPopOnEmpty(Stack<Integer> stack) {
 		assertThrows(Exception.class, () -> {
 			stack.pop();
 		});
@@ -49,37 +63,41 @@ class StackTest {
 	/**
 	 * Tests peek on an empty stack.
 	 */
-	@Test
-	public void testPeekOnEmpty() {
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	public void testPeekOnEmpty(Stack<Integer> stack) {
 		assertThrows(Exception.class, () -> {
 			stack.peek();
 		});
 	}
 
 	/**
-	 * Test method for {@link main.snippets.ds.Stack#push(java.lang.Object)}.
+	 * Test method for {@link main.snippets.ds.stack.LinkedListStack#push(java.lang.Object)}.
 	 */
-	@Test
-	void testPush() {
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	void testPush(Stack<Integer> stack) {
 		stack.push(2);
 		assertEquals(1, stack.size());
 	}
 
 	/**
-	 * Test method for {@link main.snippets.ds.Stack#pop()}.
+	 * Test method for {@link main.snippets.ds.stack.LinkedListStack#pop()}.
 	 */
-	@Test
-	void testPop() {
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	void testPop(Stack<Integer> stack) {
 		stack.push(2);
 		assertTrue(stack.pop() == 2);
 		assertEquals(0, stack.size());
 	}
 
 	/**
-	 * Test method for {@link main.snippets.ds.Stack#peek()}.
+	 * Test method for {@link main.snippets.ds.stack.LinkedListStack#peek()}.
 	 */
-	@Test
-	void testPeek() {
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	void testPeek(Stack<Integer> stack) {
 		stack.push(2);
 		assertTrue(stack.peek() == 2);
 		assertEquals(1, stack.size());
@@ -88,8 +106,9 @@ class StackTest {
 	/**
 	 * Tests a combinaison of operations.
 	 */
-	@Test
-	public void testExhaustively() {
+	@ParameterizedTest
+	@MethodSource("provideStacks")
+	public void testExhaustively(Stack<Integer> stack) {
 		assertTrue(stack.isEmpty());
 		stack.push(1);
 		assertTrue(!stack.isEmpty());
