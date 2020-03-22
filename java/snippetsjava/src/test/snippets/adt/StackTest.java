@@ -30,7 +30,7 @@ class StackTest {
 	/**
 	 * Provides tests with different stack types.
 	 * 
-	 * @return	the stream of stacks of dirrefent type
+	 * @return	the stream of stacks of different types
 	 */
 	public static Stream<Arguments> provideStacks() {
 		  return Stream.of(
