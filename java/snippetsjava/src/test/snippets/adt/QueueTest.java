@@ -10,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import main.snippets.adt.queue.DynamicArrayQueue;
 import main.snippets.adt.queue.LinkedListQueue;
 import main.snippets.adt.queue.Queue;
 
@@ -21,7 +22,7 @@ class QueueTest {
 	 */
 	public static Stream<Arguments> provideQueues() {
 		  return Stream.of(
-//		      Arguments.of(new ArrayQueue<Integer>()),
+		      Arguments.of(new DynamicArrayQueue<Integer>()),
 		      Arguments.of(new LinkedListQueue<Integer>())
 		  );
 		}
