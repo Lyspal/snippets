@@ -1,7 +1,7 @@
 /**
  * Copyright 2020 Sylvain Laporte.
  */
-package main.snippets.ds.stack;
+package main.snippets.adt.stack;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;

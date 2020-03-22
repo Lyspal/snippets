@@ -1,29 +1,29 @@
 /**
  * Copyright 2020 Sylvain Laporte.
  */
-package main.snippets.ds.stack;
+package main.snippets.adt.stack;
 
-import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
- * A dynamic array implementation of a stack.
+ * A doubly linked list implementation of a stack.
  * <p>
- * Space complexity:	24 + 24n
- * 						24 + 8n (for static array))
+ * Space complexity:	24 + 40n (with inner class)
+ * 						24 + 32n (with static class)
  * 
  * @author sylvainlaporte
  * @version %I%, %G%
  */
-public class ArrayStack<T> implements Stack<T> {
+public class LinkedListStack<T> implements Stack<T> {
 
-	private ArrayList<T> array = new ArrayList<T>();
+	private LinkedList<T> list = new LinkedList<T>();
 	
 	/**
 	 * Constructor.
 	 */
-	public ArrayStack() {
+	public LinkedListStack() {
 		
 	}
 	
@@ -32,7 +32,7 @@ public class ArrayStack<T> implements Stack<T> {
 	 * 
 	 * @param firstElement	the initial element
 	 */
-	public ArrayStack(T firstElement) {
+	public LinkedListStack(T firstElement) {
 		push(firstElement);
 	}
 	
@@ -42,7 +42,7 @@ public class ArrayStack<T> implements Stack<T> {
 	 * @return	the number of elements
 	 */
 	public int size() {
-		return array.size();
+		return list.size();
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public class ArrayStack<T> implements Stack<T> {
 	 * @param element	the element to push
 	 */
 	public void push(T element) {
-		array.add(element);
+		list.addLast(element);
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class ArrayStack<T> implements Stack<T> {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
-		return array.remove(size() - 1);
+		return list.removeLast();
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class ArrayStack<T> implements Stack<T> {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
-		return array.get(size() - 1);
+		return list.peekLast();
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class ArrayStack<T> implements Stack<T> {
 	 */
 	@Override
 	public Iterator<T> iterator() {
-		return array.iterator();
+		return list.iterator();
 	}
 
 }

@@ -1,4 +1,4 @@
-package test.snippets.algotest.search;
+package test.snippets.algo.search;
 
 import static org.junit.jupiter.api.Assertions.*;
 
