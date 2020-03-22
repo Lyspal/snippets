@@ -11,19 +11,18 @@ import java.util.Iterator;
  * A dynamic array implementation of a stack.
  * <p>
  * Space complexity:	24 + 24n
- * 						24 + 8n (for static array))
  * 
  * @author sylvainlaporte
  * @version %I%, %G%
  */
-public class ArrayStack<T> implements Stack<T> {
+public class DynamicArrayStack<T> implements Stack<T> {
 
 	private ArrayList<T> array = new ArrayList<T>();
 	
 	/**
 	 * Constructor.
 	 */
-	public ArrayStack() {
+	public DynamicArrayStack() {
 		
 	}
 	
@@ -32,7 +31,7 @@ public class ArrayStack<T> implements Stack<T> {
 	 * 
 	 * @param firstElement	the initial element
 	 */
-	public ArrayStack(T firstElement) {
+	public DynamicArrayStack(T firstElement) {
 		push(firstElement);
 	}
 	

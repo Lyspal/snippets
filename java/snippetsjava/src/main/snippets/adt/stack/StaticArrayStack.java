@@ -1,20 +1,20 @@
 /**
  * Copyright 2020 Sylvain Laporte.
  */
-package main.snippets.adt.queue;
+package main.snippets.adt.stack;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 
 /**
- * Static array implementation of a queue.
+ * A static array implementation of a stack.
  * <p>
  * Space complexity:	24 + 8n
  * 
  * @author sylvainlaporte
  * @version %I%, %G%
- * 
  */
-public class StaticArrayQueue<T> implements Queue<T> {
+public class StaticArrayStack<T> implements Stack<T> {
 
 	private T[] array;
 	private int size = 0;
@@ -23,22 +23,22 @@ public class StaticArrayQueue<T> implements Queue<T> {
 	 * Constructor.
 	 */
 	@SuppressWarnings("unchecked")
-	public StaticArrayQueue(int capacity) {
+	public StaticArrayStack(int capacity) {
 		array = (T[]) new Object[capacity];
 	}
 	
 	/**
-	 * Constructor. Creates a queue with an initial element.
+	 * Constructor. Create a stack with an initial element.
 	 * 
-	 * @param firstElement
+	 * @param firstElement	the initial element
 	 */
-	public StaticArrayQueue(int capacity, T firstElement) {
+	public StaticArrayStack(int capacity, T firstElement) {
 		this(capacity);
-		enqueue(firstElement);
+		push(firstElement);
 	}
 	
 	/**
-	 * Returns the number of elements in the queue.
+	 * Returns the number of elements in the stack.
 	 * 
 	 * @return	the number of elements
 	 */
@@ -47,7 +47,7 @@ public class StaticArrayQueue<T> implements Queue<T> {
 	}
 	
 	/**
-	 * Checks if the queue is empty.
+	 * Checks if the stack is empty.
 	 * 
 	 * @return	true if empty; false otherwise
 	 */
@@ -56,50 +56,46 @@ public class StaticArrayQueue<T> implements Queue<T> {
 	}
 	
 	/**
-	 * Peeks the element at the front of the queue without removing the element.
+	 * Pushes an element on the stack.
 	 * 
-	 * @return	the peeked element
-	 * @throws	RuntimeException
+	 * @param element	the element to push
 	 */
-	public T peek() {
-		if (isEmpty()) {
-			throw new RuntimeException("Empty queue");
-		}
-		return array[0];
+	public void push(T element) {
+		array[size] = element;
+		size++;
 	}
 	
 	/**
-	 * Removes the element from the front of the queue.
+	 * Pops an element off the stack.
+	 * <p>
+	 * Throws an exception if the stack is empty.
 	 * 
-	 * @return	the polled element
-	 * @throws	RuntimeException
+	 * @return	the popped element
+	 * @throws	EmptyStackException
 	 */
-	public T dequeue() {
+	public T pop() {
 		if (isEmpty()) {
-			throw new RuntimeException("Empty queue");
+			throw new EmptyStackException();
 		}
-		T out = array[0];
-		int i = 0;
-		
-		// Advance element in the queue if size > 1.
-		for (; i < size - 1; i++) {
-			array[i] = array[i + 1];
-		}
-		
-		array[i] = null;
+		T out = array[size - 1];
+		array[size - 1] = null;
 		size--;
-		
 		return out;
 	}
 	
 	/**
-	 * Adds an element to the back of the queue.
+	 * Peeks the top of the stack without removing an element.
+	 * <p>
+	 * Throws an exception if the stack is empty.
 	 * 
-	 * @param element	the element to add
+	 * @return	the peeked element
+	 * @throws	EmptyStackException
 	 */
-	public void enqueue(T element) {
-		array[size] = element;
-		size++;
+	public T peek() {
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		}
+		return array[size - 1];
 	}
 	
 	/**
@@ -135,11 +131,11 @@ public class StaticArrayQueue<T> implements Queue<T> {
 			}
 		};
 	}
-	
+
 	/**
-	 * Converts the queue to a String representation.
+	 * Converts the stack to a String representation.
 	 * 
-	 * @return	the String representation of the queue
+	 * @return	the String representation of the stack
 	 */
 	@Override
 	public String toString() {
@@ -153,4 +149,5 @@ public class StaticArrayQueue<T> implements Queue<T> {
 			return sb.append(array[size - 1] + " ]").toString();
 		}
 	}
+	
 }

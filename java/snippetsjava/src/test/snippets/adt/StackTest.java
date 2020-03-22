@@ -13,9 +13,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import main.snippets.adt.stack.ArrayStack;
+import main.snippets.adt.stack.DynamicArrayStack;
 import main.snippets.adt.stack.LinkedListStack;
 import main.snippets.adt.stack.Stack;
+import main.snippets.adt.stack.StaticArrayStack;
 
 /**
  * Tests for the Stack class. 
@@ -34,7 +35,8 @@ class StackTest {
 	 */
 	public static Stream<Arguments> provideStacks() {
 		return Stream.of(
-			Arguments.of(new ArrayStack<Integer>()),
+			Arguments.of(new StaticArrayStack<Integer>(2)),
+			Arguments.of(new DynamicArrayStack<Integer>()),
 			Arguments.of(new LinkedListStack<Integer>())
 		);
 	}
