@@ -1,3 +1,6 @@
+/**
+ * Copyright 2020 Sylvain Laporte.
+ */
 package test.snippets.adt;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +33,7 @@ class QueueTest {
 	}
 	
 	/**
-	 * Test method for {@link main.snippets.adt.queue.LinkedListQueue#isEmpty()}.
+	 * Test method for {@link main.snippets.adt.queue.Queue#isEmpty()}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideQueues")
@@ -62,7 +65,7 @@ class QueueTest {
 	}
 
 	/**
-	 * Test method for {@link main.snippets.adt.queue.LinkedListQueue#enqueue(java.lang.Object)}.
+	 * Test method for {@link main.snippets.adt.queue.Queue#enqueue(java.lang.Object)}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideQueues")
@@ -72,7 +75,7 @@ class QueueTest {
 	}
 
 	/**
-	 * Test method for {@link main.snippets.adt.queue.LinkedListQueue#dequeue()}.
+	 * Test method for {@link main.snippets.adt.queue.Queue#dequeue()}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideQueues")
@@ -83,7 +86,7 @@ class QueueTest {
 	}
 
 	/**
-	 * Test method for {@link main.snippets.adt.queue.LinkedListQueue#peek()}.
+	 * Test method for {@link main.snippets.adt.queue.Queue#peek()}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideQueues")

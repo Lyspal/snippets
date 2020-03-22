@@ -33,14 +33,14 @@ class StackTest {
 	 * @return	the stream of stacks of different types
 	 */
 	public static Stream<Arguments> provideStacks() {
-		  return Stream.of(
-		      Arguments.of(new ArrayStack<Integer>()),
-		      Arguments.of(new LinkedListStack<Integer>())
-		  );
-		}
+		return Stream.of(
+			Arguments.of(new ArrayStack<Integer>()),
+			Arguments.of(new LinkedListStack<Integer>())
+		);
+	}
 	
 	/**
-	 * Test method for {@link main.snippets.adt.stack.LinkedListStack#isEmpty()}.
+	 * Test method for {@link main.snippets.adt.stack.Stack#isEmpty()}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideStacks")
@@ -72,7 +72,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link main.snippets.adt.stack.LinkedListStack#push(java.lang.Object)}.
+	 * Test method for {@link main.snippets.adt.stack.Stack#push(java.lang.Object)}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideStacks")
@@ -82,7 +82,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link main.snippets.adt.stack.LinkedListStack#pop()}.
+	 * Test method for {@link main.snippets.adt.stack.Stack#pop()}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideStacks")
@@ -93,7 +93,7 @@ class StackTest {
 	}
 
 	/**
-	 * Test method for {@link main.snippets.adt.stack.LinkedListStack#peek()}.
+	 * Test method for {@link main.snippets.adt.stack.Stack#peek()}.
 	 */
 	@ParameterizedTest
 	@MethodSource("provideStacks")
