@@ -94,7 +94,9 @@ public class LinkedListStack<T> implements Stack<T> {
 	}
 	
 	/**
-	 * Iterates through the stack using an iterator.
+	 * Gets the iterator of the stack.
+	 * 
+	 * @return	the iterator
 	 */
 	@Override
 	public Iterator<T> iterator() {

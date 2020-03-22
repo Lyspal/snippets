@@ -56,7 +56,9 @@ public interface Stack<T> extends Iterable<T> {
 	public T peek();
 	
 	/**
-	 * Iterates through the stack using an iterator.
+	 * Gets the iterator of the stack.
+	 * 
+	 * @return	the iterator
 	 */
 	@Override
 	public Iterator<T> iterator();
