@@ -73,7 +73,7 @@ class DynamicArrayTest {
 		array.append(3);
 		array.append(4);
 		array.insert(1, 2);
-		assertEquals("[1, 2, 3, 4]",array.toString(), "Insertion didn't work");
+		assertEquals("[ 1, 2, 3, 4 ]",array.toString(), "Insertion didn't work");
 	}
 
 	@Test
@@ -110,7 +110,7 @@ class DynamicArrayTest {
 		DynamicArray<Integer> array = new DynamicArray<Integer>();
 		array.append(3);
 		array.append(4);
-		assertEquals("[3, 4]", array.toString(), "Array not properly converted to String");
+		assertEquals("[ 3, 4 ]", array.toString(), "Array not properly converted to String");
 	}
 
 }
