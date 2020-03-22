@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import main.snippets.adt.queue.DynamicArrayQueue;
 import main.snippets.adt.queue.LinkedListQueue;
 import main.snippets.adt.queue.Queue;
+import main.snippets.adt.queue.StaticArrayQueue;
 
 class QueueTest {
 	/**
@@ -21,11 +22,12 @@ class QueueTest {
 	 * @return	the stream of queues of different types
 	 */
 	public static Stream<Arguments> provideQueues() {
-		  return Stream.of(
-		      Arguments.of(new DynamicArrayQueue<Integer>()),
-		      Arguments.of(new LinkedListQueue<Integer>())
-		  );
-		}
+		return Stream.of(
+			Arguments.of(new StaticArrayQueue<Integer>(2)),
+			Arguments.of(new DynamicArrayQueue<Integer>()),
+			Arguments.of(new LinkedListQueue<Integer>())
+		);
+	}
 	
 	/**
 	 * Test method for {@link main.snippets.adt.queue.LinkedListQueue#isEmpty()}.
