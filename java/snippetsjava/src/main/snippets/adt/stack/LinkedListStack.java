@@ -28,7 +28,7 @@ public class LinkedListStack<T> implements Stack<T> {
 	}
 	
 	/**
-	 * Constructor. Create a stack with an initial element.
+	 * Constructor. Creates a stack with an initial element.
 	 * 
 	 * @param firstElement	the initial element
 	 */
