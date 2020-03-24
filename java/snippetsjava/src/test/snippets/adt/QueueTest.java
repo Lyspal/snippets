@@ -19,6 +19,7 @@ import main.snippets.adt.queue.Queue;
 import main.snippets.adt.queue.StaticArrayQueue;
 
 class QueueTest {
+	
 	/**
 	 * Provides tests with different queue types.
 	 * 
