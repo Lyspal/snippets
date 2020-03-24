@@ -20,6 +20,13 @@ import main.snippets.ds.heap.BinaryHeap;
 import main.snippets.ds.heap.MaxBinaryHeap;
 import main.snippets.ds.heap.MinBinaryHeap;
 
+/**
+ * Tests for the heap data structure.
+ * 
+ * @author sylvainlaporte
+ * @version %I%, %G%
+ *
+ */
 class BinaryHeapTest {
 
 	static final int LOOPS = 1000;
@@ -383,88 +390,6 @@ class BinaryHeapTest {
 				assertEquals(maxPQ.peek(), maxHeap.peek());
 				assertEquals(maxPQ.size(), maxHeap.size());
 				assertTrue(maxHeap.isHeap(0));
-			}
-		}
-	}
-	
-	@Test
-	public void testPQReusability() {
-		List<Integer> SZs = genUniqueRandList(LOOPS);
-		PriorityQueue<Integer> pq = new PriorityQueue<>();
-		BinaryHeap<Integer> heap = new MinBinaryHeap<>();
-		
-		for (int sz : SZs) {
-			heap.clear();
-			pq.clear();
-			
-			List<Integer> nums = genRandList(sz);
-			for (int n : nums) {
-				heap.add(n);
-				pq.add(n);
-			}
-			
-			Collections.shuffle(nums);
-			
-			for (int i = 0; i < sz / 2; i++) {
-				// Sometimes add a new number into the BinaryHeap
-				if (0.25 < Math.random()) {
-					int randNum = (int) (Math.random() * 10000);
-					pq.add(randNum);
-					heap.add(randNum);
-				}
-				
-				int removeNum = nums.get(i);
-				assertTrue(heap.isHeap(0));
-				assertEquals(pq.size(), heap.size());
-				assertEquals(pq.peek(), heap.peek());
-				
-				pq.remove(removeNum);
-				heap.remove(removeNum);
-				
-				assertEquals(pq.peek(), heap.peek());
-				assertEquals(pq.size(), heap.size());
-				assertTrue(heap.isHeap(0));
-			}
-		}
-	}
-	
-	@Test
-	public void testMaxPQReusability() {
-		List<Integer> SZs = genUniqueRandList(LOOPS);
-		PriorityQueue<Integer> pq = new MaxPriorityQueue<>();
-		BinaryHeap<Integer> heap = new MaxBinaryHeap<>();
-		
-		for (int sz : SZs) {
-			heap.clear();
-			pq.clear();
-			
-			List<Integer> nums = genRandList(sz);
-			for (int n : nums) {
-				heap.add(n);
-				pq.add(n);
-			}
-			
-			Collections.shuffle(nums);
-			
-			for (int i = 0; i < sz / 2; i++) {
-				// Sometimes add a new number into the BinaryHeap
-				if (0.25 < Math.random()) {
-					int randNum = (int) (Math.random() * 10000);
-					pq.add(randNum);
-					heap.add(randNum);
-				}
-				
-				int removeNum = nums.get(i);
-				assertTrue(heap.isHeap(0));
-				assertEquals(pq.size(), heap.size());
-				assertEquals(pq.peek(), heap.peek());
-				
-				pq.remove(removeNum);
-				heap.remove(removeNum);
-				
-				assertEquals(pq.peek(), heap.peek());
-				assertEquals(pq.size(), heap.size());
-				assertTrue(heap.isHeap(0));
 			}
 		}
 	}
