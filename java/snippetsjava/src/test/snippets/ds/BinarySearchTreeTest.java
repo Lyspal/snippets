@@ -1,4 +1,4 @@
-package main.snippets.ds.tree;
+package test.snippets.ds;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,6 +15,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.snippets.ds.tree.BinarySearchTree;
+import main.snippets.ds.tree.TreeTraversalOrder;
 
 class TestTreeNode {
 
